@@ -64,10 +64,19 @@ body.wrong {
 }
 
 .start-btn, .next-btn {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     padding: 10px 20px;
+    height: 150px;
+    width: 250px;
+    background-color:darkred;
+    border: 3px solid black;
 }
+.start-btn:hover {
+    background-color: red;
+    border: 3px solid black;
+}
+
 .controls {
     display: flex;
     justify-content: center;
