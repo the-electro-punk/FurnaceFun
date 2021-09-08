@@ -43,7 +43,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
-    comsole.log('everything is reset')
+    console.log('everything is reset')
     NextButton.classlist.add('hide')
     while (answerButtonsElement.firstchild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
