@@ -36,9 +36,17 @@ body.wrong {
     padding:10px;
     box-shadow: 0, 0, 10px 2px;
 }
-
+.title {
+    text-align:center;
+    font-size: 64px;
+    font-weight: bold;
+}
 .question {
+    width: 700px;
+    margin: 20px auto auto auto;
     font-size: 48px;
+    background-color: white;
+    border-radius: 5px;padding: 10px;
 }
 .btn-grid{
     display: grid;
@@ -49,7 +57,7 @@ body.wrong {
 
 .btn {
     --hue: var(--hue);
-   
+    margin-top: 35px;
     border-radius: 5px;
     padding: 5px, 10px;
     height: 50px;
