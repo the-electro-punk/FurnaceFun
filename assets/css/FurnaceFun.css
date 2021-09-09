@@ -29,6 +29,7 @@ body.wrong {
 
 .container {
     width: 800px;
+    height: 650px;
     max-width: 80%;
     background-color: crimson;
     border-radius: 5px;
@@ -36,6 +37,9 @@ body.wrong {
     box-shadow: 0, 0, 10px 2px;
 }
 
+.question {
+    font-size: 48px;
+}
 .btn-grid{
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -64,11 +68,12 @@ body.wrong {
 }
 
 .start-btn, .next-btn {
-    font-size: 3.5rem;
+    font-size: 7rem;
     font-weight: bold;
+    margin: 100px;
     padding: 10px 20px;
-    height: 150px;
-    width: 250px;
+    height: 350px;
+    width: 450px;
     background-color:darkred;
     border: 3px solid black;
 }
