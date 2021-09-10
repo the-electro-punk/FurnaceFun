@@ -8,6 +8,7 @@ const ThirdBTN = document.getElementById('btn-3')
 const questionBox = document.getElementById('question-container')
 
 // this selects a value so a random question is chosen from the array
+// use a for loop for Math.random
 let startQuest = Math.floor(Math.random() * 10)
 console.log('x = ' + startQuest)
 
@@ -24,7 +25,7 @@ function startGame() {
     questionStart()
 }
 function questionStart() {
-// use a for loop for Math.random
+
     // this changes the question text into one of the questions from the array
     let questionElement = document.getElementById('question').textContent = questArray[startQuest]
     let First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
