@@ -40,11 +40,12 @@ body.wrong {
     text-align:center;
     font-size: 64px;
     font-weight: bold;
+    margin: 15px;
 }
 .question {
     width: 700px;
     height: 225px;
-    margin: 20px auto auto auto;
+    margin: 10px auto auto auto;
     font-size: 48px;
     background-color: white;
     border-radius: 5px;
@@ -53,13 +54,12 @@ body.wrong {
 .btn-grid{
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap:20px;
+    gap:15px;
     margin: 20px, 0;
 }
 
 .btn {
-    --hue: var(--hue);
-    margin-top: 35px;
+    margin-top: 15px;
     border-radius: 5px;
     padding: 5px, 10px;
     height: 100px;
@@ -74,14 +74,14 @@ body.wrong {
     background-color: white;
 }
 
-.btn.correct {
+/* .btn.correct {
     --hue: var(--hue-correct);
     color: black;
 }
 
 .btn.wrong {
     --hue: var(--hue-wrong);
-}
+} */
 
 .start-btn {
     font-size: 7rem;
@@ -102,7 +102,7 @@ body.wrong {
 .next-btn {
     font-size: 5rem;
     font-weight: bold;
-    margin: 25px;
+    margin: 15px;
     padding: 10px;
     height: 100px;
     width: 450px;
