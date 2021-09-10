@@ -1,5 +1,10 @@
 const StartButton = document.getElementById('start-btn')
-const NextButton = document.getElementById('next-btn') 
+const NextButton = document.getElementById('next-btn')
+
+const StartingMinutes = 10;
+let Time = StartingMinutes * 60
+const countDownEl = document.getElementById('countdown');
+
 var Score = 0
 var totalQuest = 0
 
@@ -26,8 +31,20 @@ StartButton.addEventListener('click', startGame)
 function startGame() {
     StartButton.classList.add('hide')
     questionBox.classList.remove('hide')
+    countDownEl.classList.remove('hide')
     console.log('start button clicked')
     questionStart()
+    updateCountDown
+}
+
+setInterval(updateCountDown, 1000)
+
+function updateCountDown() {
+    const minutes = Math.floor(Time / 60);
+    let seconds = Time % 60;
+
+    countDownEl.innertext = `${minutes}: ${seconds}`
+    Time--;
 }
 
 function questionStart() {
@@ -69,7 +86,6 @@ function SelectAnswer() {
     if (startQuest >= 10) {
         startQuest = startQuest - 10
     }
-    if (totalQuest < 3) {
         questionElement = document.getElementById('question').textContent = questArray[startQuest]
         First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
         Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
@@ -82,10 +98,8 @@ function SelectAnswer() {
         totalQuest++
         console.log("questions answered is " + totalQuest)
     }
-    else if (totalQuest === 3) {
-        console.log(totalQuest + " answered")
-        questionBox.classList.add('hide')
-    }
+  
+
 
 // this array contains all the question so that the questionStart() function can choose a question based on a random number and the position of the question
 
@@ -96,7 +110,7 @@ const questArray = ["This bird from Greek mythology is usually associated with f
 // var answersThree = ["Cucco", "Falcons", "Four", "Fire Breath", "Sea", "Smaugs", "Nagas", "Tonatiuh", "Jorogumo", "Horus"]
 
 // these arrays contain the answers that will be speciifed to each button
-const answersOne = [{text: "Harpy", correct: false}, {text: "Foxes", correct: true}, {text: "Two", correct: false}, {text: "Wings", correct: false}, {text: "Land", correct: true}, {text: "Eastern Dragons", correct: true}, {text: "Sirens", correct: false}, {text: "Questzalcoatl", correct: true}, {text: "Yuki-Onna", correct: true}, {text: "Anubis", correct: true}]
+const answersOne = [{text: "Harpy", correct: false}, {text: "Foxes", correct: true}, {text: "Two", correct: false}, {text: "Wings", correct: false}, {text: "Land", correct: true}, {text: "Eastern Dragons", correct: true}, {text: "Sirens", correct: false}, {text: "Quetzalcoatl", correct: true}, {text: "Yuki-Onna", correct: true}, {text: "Anubis", correct: true}]
 
 const answersTwo = [{text: "Phoenix", correct: true}, {text: "Leopards", correct: false}, {text: "Three", correct: true}, {text: "Horn", correct: true}, {text: "Air", correct: false}, {text: "Western Dragons", correct: false}, {text: "Gorgons", correct: true}, {text: "Tezcatlipoca", correct: false}, {text: "Rokurokubi", correct: false}, {text: "Ra", correct: false}]
 
