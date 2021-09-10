@@ -1,7 +1,7 @@
 const StartButton = document.getElementById('start-btn')
 const NextButton = document.getElementById('next-btn')
 
-const StartingMinutes = 10;
+const StartingMinutes = 5;
 let Time = StartingMinutes * 60
 const countDownEl = document.getElementById('countdown');
 
@@ -36,15 +36,23 @@ function startGame() {
     questionStart()
     updateCountDown
 }
-
+// this determines the timer counts down
 setInterval(updateCountDown, 1000)
 
+// this function sets up the timer
 function updateCountDown() {
+    if (totalQuest < 10) {
     const minutes = Math.floor(Time / 60);
     let seconds = Time % 60;
 
+    seconds = seconds < 5 ? '0' + seconds : seconds;
+
     countDownEl.textContent = `${minutes}: ${seconds}`
     Time--;
+    }
+    if (totalQuest === 10) {
+        countDownEl.classList.add('hide')
+    }
 }
 
 function questionStart() {
@@ -61,9 +69,9 @@ function questionStart() {
         console.log(Third)
         }
 // these determine which answer was selected
-FirstBTN.addEventListener('click', SelectAnswer)
-SecondBTN.addEventListener('click', SelectAnswer)
-ThirdBTN.addEventListener('click', SelectAnswer)
+FirstBTN.addEventListener('click', SelectAnswer, ButtonOneCorrect)
+SecondBTN.addEventListener('click', SelectAnswer, ButtonTwoCorrect)
+ThirdBTN.addEventListener('click', SelectAnswer, ButtonThreeCorrect)
 
 // this function is what happens AFTER an answer has been selected
 // it shows which is correct/incorrect and display the next button
@@ -72,7 +80,39 @@ function SelectAnswer() {
     FirstBTN.disabled = true
     SecondBTN.disabled = true
     ThirdBTN.disabled = true
+    }
+function ButtonOneCorrect() {
+    if (answersOne[startQuest].correct === true) {
+        Score++;
+        console.log("score is now " + Score)
+        document.getElementById('btn-1').style.color = "lightgreen";
+    }
+    else {
+        document.getElementById('btn-1').style.color = "red"; 
+    }
 }
+function ButtonTwoCorrect() {
+    if (answersTwo[startQuest].correct === true) {
+        Score++;
+        console.log("score is now " + Score)
+        document.getElementById('btn-2').style.color = "lightgreen";
+    }
+    else {
+        document.getElementById('btn-2').style.color = "red"; 
+    }
+}
+function ButtonThreeCorrect() {
+    if (answersThree[startQuest].correct === true) {
+        Score++;
+        console.log("score is now " + Score)
+        document.getElementById('btn-3').style.color = "lightgreen";
+    }
+    else {
+        document.getElementById('btn-3').style.color = "red"; 
+    }
+}
+
+
  NextButton.addEventListener('click', NextQuestion)
 
  function NextQuestion() {
@@ -86,6 +126,10 @@ function SelectAnswer() {
     if (startQuest >= 10) {
         startQuest = startQuest - 10
     }
+        // document.getElementById('btn-1').style.color = "black";
+        // document.getElementById('btn-2').style.color = "black";
+        // document.getElementById('btn-3').style.color = "black";
+
         questionElement = document.getElementById('question').textContent = questArray[startQuest]
         First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
         Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
