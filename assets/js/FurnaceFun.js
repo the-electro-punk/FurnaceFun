@@ -43,7 +43,7 @@ function updateCountDown() {
     const minutes = Math.floor(Time / 60);
     let seconds = Time % 60;
 
-    countDownEl.innertext = `${minutes}: ${seconds}`
+    countDownEl.textContent = `${minutes}: ${seconds}`
     Time--;
 }
 
