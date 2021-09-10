@@ -43,6 +43,7 @@ body.wrong {
 }
 .question {
     width: 700px;
+    height: 225px;
     margin: 20px auto auto auto;
     font-size: 48px;
     background-color: white;
@@ -119,7 +120,15 @@ body.wrong {
     justify-content: center;
     align-items: center;
 }
-
+.countdown {
+    font-size: 48px;
+    background-color: orangered;
+    border-radius: 10px;
+    border: orange solid 5px;
+    width: 200px;
+    padding: 15px;
+    margin: 10px auto 0 auto;
+}
 .hide {
     display: none;
 }
