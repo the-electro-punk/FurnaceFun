@@ -1,6 +1,7 @@
 const StartButton = document.getElementById('start-btn')
 const NextButton = document.getElementById('next-btn') 
 var Score = 0
+var totalQuest = 0
 
 const FirstBTN = document.getElementById('btn-1')
 const SecondBTN = document.getElementById('btn-2')
@@ -9,12 +10,15 @@ const questionBox = document.getElementById('question-container')
 
 // this selects a value so a random question is chosen from the array
 // use a for loop for Math.random
-let startQuest = Math.floor(Math.random() * 10)
+var startQuest = Math.floor(Math.random() * 10)
 console.log('x = ' + startQuest)
 
 // this will decide how many steps in the array to take to select the next question/ this allows the questions to be a (mostly) random order
-let Steps = Math.floor(Math.random() * 6) + 1
-console.log('y = ' + Steps)
+// let Steps = Math.floor(Math.random() * 4) + 1
+//     if (Steps ** 2 === 0 || Steps ** 5 === 0) {
+//         Steps = Math.floor(Math.random() * 4) + 1
+//     }
+// console.log('y = ' + Steps)
 
 StartButton.addEventListener('click', startGame)
 
@@ -24,8 +28,9 @@ function startGame() {
     console.log('start button clicked')
     questionStart()
 }
-function questionStart() {
 
+function questionStart() {
+if (totalQuest < 10) {
     // this changes the question text into one of the questions from the array
     let questionElement = document.getElementById('question').textContent = questArray[startQuest]
     let First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
@@ -37,6 +42,7 @@ function questionStart() {
     console.log(First)
     console.log(Second)
     console.log(Third)
+    }
 }
 // these determine which answer was selected
 FirstBTN.addEventListener('click', SelectAnswer)
@@ -50,13 +56,20 @@ function SelectAnswer() {
     FirstBTN.disabled = true
     SecondBTN.disabled = true
     ThirdBTN.disabled = true
- }
+}
  NextButton.addEventListener('click', NextQuestion)
 
  function NextQuestion() {
     NextButton.classList.add('hide')
     // this determines how many steps the next question should be
-    startQuest = startQuest + Steps 
+    // startQuest = startQuest + Steps
+    // if (startQuest >= 10) {
+    //     startQuest = startQuest - 10
+    // }
+    startQuest++
+    if (startQuest >= 10) {
+        startQuest = startQuest - 10
+    }
 
     questionElement = document.getElementById('question').textContent = questArray[startQuest]
     First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
@@ -67,7 +80,8 @@ function SelectAnswer() {
     FirstBTN.disabled = false
     SecondBTN.disabled = false
     ThirdBTN.disabled = false
-
+    totalQuest++
+    console.log("questions answered is " + totalQuest)
  }
 
 // this array contains all the question so that the questionStart() function can choose a question based on a random number and the position of the question
