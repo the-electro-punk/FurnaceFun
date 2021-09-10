@@ -22,6 +22,7 @@ console.log('x = ' + startQuest)
 
 StartButton.addEventListener('click', startGame)
 
+// this removes the start button and creates the question
 function startGame() {
     StartButton.classList.add('hide')
     questionBox.classList.remove('hide')
@@ -30,20 +31,18 @@ function startGame() {
 }
 
 function questionStart() {
-if (totalQuest < 10) {
-    // this changes the question text into one of the questions from the array
-    let questionElement = document.getElementById('question').textContent = questArray[startQuest]
-    let First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
-    let Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
-    let Third = document.getElementById('btn-3').textContent = answersThree[startQuest].text
-        
-    // these were to test if the input was being made
-    console.log(questionElement)
-    console.log(First)
-    console.log(Second)
-    console.log(Third)
-    }
-}
+        // this changes the question text into one of the questions from the array
+        let questionElement = document.getElementById('question').textContent = questArray[startQuest]
+        let First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
+        let Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
+        let Third = document.getElementById('btn-3').textContent = answersThree[startQuest].text
+            
+        // these were to test if the input was being made
+        console.log(questionElement)
+        console.log(First)
+        console.log(Second)
+        console.log(Third)
+        }
 // these determine which answer was selected
 FirstBTN.addEventListener('click', SelectAnswer)
 SecondBTN.addEventListener('click', SelectAnswer)
@@ -70,19 +69,23 @@ function SelectAnswer() {
     if (startQuest >= 10) {
         startQuest = startQuest - 10
     }
+    if (totalQuest < 3) {
+        questionElement = document.getElementById('question').textContent = questArray[startQuest]
+        First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
+        Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
+        Third = document.getElementById('btn-3').textContent = answersThree[startQuest].text
 
-    questionElement = document.getElementById('question').textContent = questArray[startQuest]
-    First = document.getElementById('btn-1').textContent = answersOne[startQuest].text
-    Second = document.getElementById('btn-2').textContent = answersTwo[startQuest].text
-    Third = document.getElementById('btn-3').textContent = answersThree[startQuest].text
-
-    // this re-enables the answer buttons
-    FirstBTN.disabled = false
-    SecondBTN.disabled = false
-    ThirdBTN.disabled = false
-    totalQuest++
-    console.log("questions answered is " + totalQuest)
- }
+        // this re-enables the answer buttons
+        FirstBTN.disabled = false
+        SecondBTN.disabled = false
+        ThirdBTN.disabled = false
+        totalQuest++
+        console.log("questions answered is " + totalQuest)
+    }
+    else if (totalQuest === 3) {
+        console.log(totalQuest + " answered")
+        questionBox.classList.add('hide')
+    }
 
 // this array contains all the question so that the questionStart() function can choose a question based on a random number and the position of the question
 
