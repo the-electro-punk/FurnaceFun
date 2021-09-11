@@ -1,5 +1,8 @@
 const StartButton = document.getElementById('start-btn')
 const NextButton = document.getElementById('next-btn')
+const resetButton = document.getElementById('reset-btn')
+const scoreBox = document.getElementById('scoreBox')
+let finalScore = document.getElementById('score')
 
 const StartingMinutes = 5;
 let Time = StartingMinutes * 60
@@ -27,14 +30,39 @@ console.log('x = ' + startQuest)
 
 StartButton.addEventListener('click', startGame)
 
+resetButton.addEventListener('click', startGame)
+
 // this removes the start button and creates the question
 function startGame() {
+    Score = 0
+    totalQuest = 0
+
+    NextButton.disabled = false
+    FirstBTN.disabled = false
+    SecondBTN.disabled = false
+    ThirdBTN.disabled = false 
+
     StartButton.classList.add('hide')
+    scoreBox.classList.add('hide')
     questionBox.classList.remove('hide')
     countDownEl.classList.remove('hide')
     console.log('start button clicked')
     questionStart()
     updateCountDown
+}
+
+function endGame() {
+    NextButton.disabled = true
+    FirstBTN.disabled = true
+    SecondBTN.disabled = true
+    ThirdBTN.disabled = true
+
+    NextButton.classList.add('hide')
+    questionBox.classList.add('hide')
+    countDownEl.classList.add('hide')
+
+    scoreBox.classList.remove('hide')
+    finalScore.textContent = (Score + "/10")
 }
 // this determines the timer counts down
 setInterval(updateCountDown, 1000)
@@ -50,11 +78,9 @@ function updateCountDown() {
     countDownEl.textContent = `${minutes}: ${seconds}`
     Time--;
     }
-    if (totalQuest === 10) {
-        NextButton.classList.add()
-        questionBox.classList.add('hide')
-        countDownEl.classList.add('hide')
-       
+    if (totalQuest >= 10) {
+        endGame()
+             
     }
 }
 
@@ -134,11 +160,7 @@ function NextQuestion() {
     document.getElementById('btn-1').style.backgroundColor = "lightgray";
     document.getElementById('btn-2').style.backgroundColor = "lightgray";
     document.getElementById('btn-3').style.backgroundColor = "lightgray";
-    // this determines how many steps the next question should be
-    // startQuest = startQuest + Steps
-    // if (startQuest >= 10) {
-    //     startQuest = startQuest - 10
-    // }
+   
     startQuest++
     if (startQuest >= 10) {
         startQuest = startQuest - 10

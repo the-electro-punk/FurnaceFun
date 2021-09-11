@@ -57,7 +57,7 @@ body.wrong {
     gap:15px;
     margin: 20px, 0;
 }
-
+/* styles the answer buttons */
 .btn {
     margin-top: 15px;
     border-radius: 5px;
@@ -69,9 +69,11 @@ body.wrong {
     background-color:lightgray;
     border-color: rgb(97, 97, 97);
 }
+/* styles the buttons with thick outline when hovering over them */
+/* originally changed to white but code would reset to base color and not change */
 .btn:hover {
     border-color: black;
-    background-color: white;
+    border: solid 10px
 }
 
 /* .btn.correct {
@@ -113,8 +115,20 @@ body.wrong {
 .next-btn:hover {
     background-color: rgb(0, 195, 0);
     border: 3px solid black;
+    
 }
-
+/* this button resets the quiz once clicked */
+.reset-btn {
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 15px;
+    padding: 10px;
+    height: 100px;
+    width: 450px;
+    background-color:skyblue;
+    border: 3px solid black;
+    border-radius: 10px;
+}
 .controls {
     display: flex;
     justify-content: center;
@@ -128,6 +142,17 @@ body.wrong {
     width: 200px;
     padding: 15px;
     margin: 10px auto 0 auto;
+}
+.score {
+    font-size: 56px;
+    text-align: center;
+}
+.scoreBox {
+    background-color: springgreen;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 56px;
+    text-align: center;
 }
 .hide {
     display: none;
