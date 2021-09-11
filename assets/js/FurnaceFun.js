@@ -52,6 +52,7 @@ function updateCountDown() {
     }
     if (totalQuest === 10) {
         countDownEl.classList.add('hide')
+        questionBox.classList.add('hide')
     }
 }
 
