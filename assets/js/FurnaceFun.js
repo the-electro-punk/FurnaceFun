@@ -83,6 +83,7 @@ function SelectAnswer() {
     ThirdBTN.disabled = true
     }
 function ButtonOneCorrect() {
+    console.log("button 1 clicked")
     if (answersOne[startQuest].correct === true) {
         Score++;
         console.log("score is now " + Score)
@@ -112,7 +113,6 @@ function ButtonThreeCorrect() {
         document.getElementById('btn-3').style.color = "red"; 
     }
 }
-
 
  NextButton.addEventListener('click', NextQuestion)
 
