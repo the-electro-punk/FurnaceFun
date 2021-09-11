@@ -51,8 +51,10 @@ function updateCountDown() {
     Time--;
     }
     if (totalQuest === 10) {
-        countDownEl.classList.add('hide')
+        NextButton.classList.add()
         questionBox.classList.add('hide')
+        countDownEl.classList.add('hide')
+       
     }
 }
 
@@ -70,54 +72,68 @@ function questionStart() {
         console.log(Third)
         }
 // these determine which answer was selected
-FirstBTN.addEventListener('click', SelectAnswer, ButtonOneCorrect)
-SecondBTN.addEventListener('click', SelectAnswer, ButtonTwoCorrect)
-ThirdBTN.addEventListener('click', SelectAnswer, ButtonThreeCorrect)
+FirstBTN.addEventListener('click', ButtonOneCorrect)
+SecondBTN.addEventListener('click', ButtonTwoCorrect)
+ThirdBTN.addEventListener('click', ButtonThreeCorrect)
 
 // this function is what happens AFTER an answer has been selected
 // it shows which is correct/incorrect and display the next button
-function SelectAnswer() {
+function selectAnswer() {
     NextButton.classList.remove('hide')
     FirstBTN.disabled = true
     SecondBTN.disabled = true
     ThirdBTN.disabled = true
     }
+
+// // this function determines if, when clicked, that button 1 is true or false
 function ButtonOneCorrect() {
     console.log("button 1 clicked")
     if (answersOne[startQuest].correct === true) {
         Score++;
         console.log("score is now " + Score)
-        document.getElementById('btn-1').style.color = "lightgreen";
+        document.getElementById('btn-1').style.backgroundColor = "lightgreen";
+        selectAnswer()
     }
     else {
-        document.getElementById('btn-1').style.color = "red"; 
+        document.getElementById('btn-1').style.backgroundColor = "red";
+        selectAnswer()
     }
 }
+// this function determines if, when clicked, that button 2 is true or false
 function ButtonTwoCorrect() {
     if (answersTwo[startQuest].correct === true) {
         Score++;
         console.log("score is now " + Score)
-        document.getElementById('btn-2').style.color = "lightgreen";
+        document.getElementById('btn-2').style.backgroundColor = "lightgreen";
+        selectAnswer()
     }
     else {
-        document.getElementById('btn-2').style.color = "red"; 
+        document.getElementById('btn-2').style.backgroundColor = "red";
+        selectAnswer()
     }
 }
+// this function determines if, when clicked, that button 3 is true or false
 function ButtonThreeCorrect() {
     if (answersThree[startQuest].correct === true) {
         Score++;
         console.log("score is now " + Score)
-        document.getElementById('btn-3').style.color = "lightgreen";
+        document.getElementById('btn-3').style.backgroundColor = "lightgreen";
+        selectAnswer()
     }
     else {
-        document.getElementById('btn-3').style.color = "red"; 
+        document.getElementById('btn-3').style.backgroundColor = "red";
+        selectAnswer()
     }
 }
 
  NextButton.addEventListener('click', NextQuestion)
 
- function NextQuestion() {
+// this function pulls up the next question after clicking Next
+function NextQuestion() {
     NextButton.classList.add('hide')
+    document.getElementById('btn-1').style.backgroundColor = "lightgray";
+    document.getElementById('btn-2').style.backgroundColor = "lightgray";
+    document.getElementById('btn-3').style.backgroundColor = "lightgray";
     // this determines how many steps the next question should be
     // startQuest = startQuest + Steps
     // if (startQuest >= 10) {
@@ -155,7 +171,7 @@ const questArray = ["This bird from Greek mythology is usually associated with f
 // var answersThree = ["Cucco", "Falcons", "Four", "Fire Breath", "Sea", "Smaugs", "Nagas", "Tonatiuh", "Jorogumo", "Horus"]
 
 // these arrays contain the answers that will be speciifed to each button
-const answersOne = [{text: "Harpy", correct: false}, {text: "Foxes", correct: true}, {text: "Two", correct: false}, {text: "Wings", correct: false}, {text: "Land", correct: true}, {text: "Eastern Dragons", correct: true}, {text: "Sirens", correct: false}, {text: "Quetzalcoatl", correct: true}, {text: "Yuki-Onna", correct: true}, {text: "Anubis", correct: true}]
+const answersOne = [{text: "Harpy", correct: false}, {text: "Foxes", correct: true}, {text: "Two", correct: false}, {text: "Wings", correct: false}, {text: "Land", correct: false}, {text: "Eastern Dragons", correct: true}, {text: "Sirens", correct: false}, {text: "Quetzalcoatl", correct: true}, {text: "Yuki-Onna", correct: true}, {text: "Anubis", correct: true}]
 
 const answersTwo = [{text: "Phoenix", correct: true}, {text: "Leopards", correct: false}, {text: "Three", correct: true}, {text: "Horn", correct: true}, {text: "Air", correct: false}, {text: "Western Dragons", correct: false}, {text: "Gorgons", correct: true}, {text: "Tezcatlipoca", correct: false}, {text: "Rokurokubi", correct: false}, {text: "Ra", correct: false}]
 
